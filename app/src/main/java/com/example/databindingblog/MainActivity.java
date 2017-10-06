@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 "Until lately, rugby has been considered a sport played only by men. What are the consequences...",
                 false, "android.resource://com.example.databindingblog/drawable/rugby", 11));
 
-        ArticleAdapter adapter = new ArticleAdapter(articles);
+        ArticleAdapter adapter = new ArticleAdapter(articles, this);
         binding.contactList.setAdapter(adapter);
     }
 }

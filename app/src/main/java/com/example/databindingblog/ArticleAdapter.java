@@ -15,10 +15,12 @@ import java.util.List;
  */
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.BindingHolder> {
 
-    private List<Article> mArticles;z
+    private List<Article> articleList;
+    private Context mContext;
 
-    public ArticleAdapter(List<Article> mArticles) {
-        this.mArticles = mArticles;
+    public ArticleAdapter(List<Article> mArticles, Context context) {
+        this.articleList = mArticles;
+        this.mContext = context;
     }
 
     @Override
@@ -33,12 +35,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.BindingH
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
         ArticleItemBinding binding = holder.binding;
-        binding.setArticle(mArticles.get(position));
+        binding.setArticle(articleList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mArticles.size();
+        return articleList.size();
     }
 
     public static class BindingHolder extends RecyclerView.ViewHolder {

@@ -1,19 +1,9 @@
 package com.example.databindingblog;
 
-import com.example.databindingblog.BR;
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.databinding.BindingAdapter;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-
 /**
  * Created by milan on 17.8.16.
  */
-public class Article extends BaseObservable {
+public class Article {
 
     private String title;
     private String excerpt;
@@ -31,14 +21,12 @@ public class Article extends BaseObservable {
         this.read = false;
     }
 
-    @Bindable
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-        notifyPropertyChanged(BR.title);
     }
 
     public String getExcerpt() {
@@ -78,35 +66,7 @@ public class Article extends BaseObservable {
     }
 
     public void setRead(boolean read) {
-        // change title of already read article:
-        if (read && !this.read) {
-            setTitle("READ: " + getTitle());
-        }
 
         this.read = read;
-    }
-
-    @BindingAdapter({"image"})
-    public static void loadImage(ImageView view, String url) {
-        Glide.with(view.getContext()).load(url).centerCrop().into(view);
-    }
-
-    public View.OnClickListener onReadMoreClicked() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Opens article detail", Toast.LENGTH_SHORT).show();
-                setRead(true);
-            }
-        };
-    }
-
-    public View.OnClickListener onCommentsClicked() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Opens comments detail", Toast.LENGTH_SHORT).show();
-            }
-        };
     }
 }
