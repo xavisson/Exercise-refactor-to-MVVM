@@ -35,7 +35,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.BindingH
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
         ArticleItemBinding binding = holder.binding;
-        binding.setArticle(articleList.get(position));
+        binding.setAvm(new ArticleViewModel(articleList.get(position), mContext));
     }
 
     @Override
